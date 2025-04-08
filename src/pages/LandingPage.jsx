@@ -85,10 +85,13 @@ const LandingPage = () => {
               Stock Prediction
               <br />
               Made Simple
+              <br />
+              <h1 className="text-xl font-bold text-gray-900 mb-4"> Made by Shashanth V & Sindhu Urs H </h1>
             </h1>
             
             <p className="text-gray-600 text-lg max-w-xl">
-            StockWisely uses the power of Artificial Neural Networks (ANN) bulid with the MERN stack to predict stock prices accurately. Stay ahead in the market with data-driven insights and real-time stock tracking
+            StockWisely uses the power of Artificial Neural Networks (ANN) bulid with the MERN stack to predict stock prices accurately. Stay ahead in the market with data-driven insights and real-time stock tracking 
+          
             </p>
 
             <div className="flex space-x-4 pt-4">

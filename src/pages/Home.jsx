@@ -12,9 +12,18 @@ const Home = () => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
   const stockList = [
-    'AAPL', 'GOOG', 'AMZN', 'TSLA', 'MSFT', 'NFLX', 'META', 'BABA', 'NVDA', 'SPY',
-    'T', 'TSM', 'TWTR', 'TXN', 'TCEHY', 'TLRY', 'V', 'UBER', 'WMT', 'BA', 'GE', 'INTC', 'IRCTC.NS',
+    // US Stocks
+    'AAPL', 'GOOG', 'AMZN', 'TSLA', 'MSFT', 'NFLX', 'META', 'NVDA', 'SPY',
+    'T', 'TSM', 'TXN', 'TCEHY', 'TLRY', 'V', 'UBER', 'WMT', 'BA', 'GE', 'INTC',
+    'ADBE', 'CRM', 'PYPL', 'PEP', 'KO', 'JNJ', 'DIS', 'NKE', 'PFE', 'SBUX',
+    'SHOP', 'ZM', 'ROKU', 'CSCO', 'ORCL', 'AMD', 'PLTR', 'SOFI',
+  
+    // Indian Stocks (.NS for NSE)
+    'RELIANCE.NS', 'HDFCBANK.NS', 'ICICIBANK.NS', 'INFY.NS', 'TCS.NS',
+    'IRCTC.NS', 'SBIN.NS', 'AXISBANK.NS', 'BAJFINANCE.NS', 'TATAMOTORS.NS',
+    'HINDUNILVR.NS'
   ];
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
