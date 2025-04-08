@@ -35,7 +35,7 @@ const Predicted = () => {
   }, []);
 
   useEffect(() => {
-    fetch('https://stock-wisely.netlify.app//predict', {
+    fetch('https://stockwisely.onrender.com/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ticker, predictionDate: futureDate }),
@@ -129,7 +129,7 @@ const Predicted = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Prediction Graph</h2>
                 <div className="graph-container shadow-lg w-full max-w-5xl mx-auto mb-8">
                   <img
-                    src={`http://localhost:5000/${data?.graph_path}`}
+                    src={`https://stockwisely.onrender.com/${data?.graph_path}`}
                     alt="Prediction Graph"
                     className="w-full rounded-lg"
                   />

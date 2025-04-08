@@ -17,7 +17,7 @@ const LandingPage = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("https://stock-wisely.netlify.app//login", { email, password });
+      const response = await axios.post("https://stockwisely.onrender.com/login", { email, password });
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
         navigate("/home");
@@ -36,7 +36,7 @@ const LandingPage = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("https://stock-wisely.netlify.app//signup", { username, email, password });
+      const response = await axios.post("https://stockwisely.onrender.com/signup", { username, email, password });
       if (response.status === 201) {
         alert("Signup successful! Redirecting to the home page...");
         navigate("/home");
