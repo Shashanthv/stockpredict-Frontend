@@ -9,14 +9,11 @@ const ImmersiveParallax = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Reset scroll to top on page load
-
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setScroll(scrollY);
 
-      // Navigate to the landing page when final bar reaches its height
-      const finalBarThreshold = 200; // You can adjust this threshold based on your preference
+      const finalBarThreshold = 200;
       if (scrollY > finalBarThreshold && !completed) {
         setCompleted(true);
         navigate("/landing", {
@@ -25,7 +22,6 @@ const ImmersiveParallax = () => {
         });
       }
 
-      // Faster activation of bars (reduced divisor from 40 to 20)
       const newIndex = Math.min(Math.floor(scrollY / 20), 4);
       setActiveBarIndex(newIndex);
     };
@@ -34,23 +30,22 @@ const ImmersiveParallax = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navigate, completed]);
 
-  // Generate bars data with initial value of 0
   const bars = Array.from({ length: 5 }, (_, index) => ({
     height: 200 + index * 50,
-    value: 0, // Start at 0
-    targetValue: Math.floor(Math.random() * 100) + 50, // Target value to animate to
+    value: 0,
+    targetValue: Math.floor(Math.random() * 100) + 50,
   }));
 
   return (
     <div className="min-h-[200vh] bg-white">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="relative h-full w-full flex flex-col items-center justify-center">
+        <div className="relative h-full w-full flex flex-col items-center justify-center px-4 sm:px-6">
           {/* Scroll Down Text */}
           <div
-            className="absolute top-8 text-center text-2xl font-semibold text-gray-700 bg-white/80 px-4 py-2 rounded-lg shadow-md"
+            className="absolute top-6 sm:top-10 text-center text-base sm:text-xl font-semibold text-gray-700 bg-white/80 px-4 py-2 rounded-lg shadow-md max-w-[90%]"
             style={{
-              opacity: Math.max(1 - scroll / 50, 0), // Faster fade (reduced from 100)
-              transform: `translateY(${scroll * 0.4}px)`, // Faster movement (increased from 0.2)
+              opacity: Math.max(1 - scroll / 50, 0),
+              transform: `translateY(${scroll * 0.4}px)`,
             }}
           >
             Scroll down to start <span className="text-orange-500">PREDICTION</span>
@@ -58,27 +53,27 @@ const ImmersiveParallax = () => {
 
           {/* Central title */}
           <div
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-8"
             style={{
-              transform: `translateY(${scroll * 0.6}px)`, // Faster movement (increased from 0.3)
-              opacity: Math.max(1 - scroll / 300, 0), // Faster fade (reduced from 500)
+              transform: `translateY(${scroll * 0.6}px)`,
+              opacity: Math.max(1 - scroll / 300, 0),
             }}
           >
-            <h1 className="text-8xl font-bold text-orange-500 whitespace-nowrap">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-orange-500 whitespace-nowrap">
               StockWisely
             </h1>
           </div>
 
           {/* Trending Arrow */}
           <div
-            className="mb-16"
+            className="mb-8 sm:mb-12"
             style={{
-              transform: `translateY(${scroll * 0.8}px)`, // Faster movement (increased from 0.4)
-              opacity: Math.max(1 - scroll / 300, 0), // Faster fade (reduced from 500)
+              transform: `translateY(${scroll * 0.8}px)`,
+              opacity: Math.max(1 - scroll / 300, 0),
             }}
           >
             <TrendingUp
-              className="text-orange-500 h-32 w-32"
+              className="text-orange-500 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32"
               style={{
                 filter: "drop-shadow(0 0 10px rgba(249, 115, 22, 0.4))",
               }}
@@ -86,14 +81,15 @@ const ImmersiveParallax = () => {
           </div>
 
           {/* Bars container */}
-          <div className="flex items-end justify-center gap-8">
+          <div className="flex items-end justify-center gap-3 sm:gap-6 flex-wrap sm:flex-nowrap">
             {bars.map((bar, index) => (
               <div key={index} className="relative group">
                 <div
-                  className="w-20 rounded-t-xl transition-all duration-150" // Faster transition (reduced from 300)
+                  className="rounded-t-xl transition-all duration-150 mx-auto"
                   style={{
+                    width: "clamp(40px, 4vw, 80px)",
                     height: index <= activeBarIndex
-                      ? `${Math.min(scroll * 3, bar.height)}px` // Faster scaling (increased from 2)
+                      ? `${Math.min(scroll * 3, bar.height)}px`
                       : "40px",
                     backgroundColor: index <= activeBarIndex ? "#f97316" : "#f4f4f5",
                     transform: `scaleY(${index <= activeBarIndex ? 1 : 0.3})`,
@@ -104,7 +100,6 @@ const ImmersiveParallax = () => {
                       : "none",
                   }}
                 />
-                {/* No numbers below bars */}
               </div>
             ))}
           </div>
