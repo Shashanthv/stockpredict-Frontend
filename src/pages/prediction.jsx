@@ -35,7 +35,7 @@ const Predicted = () => {
   }, []);
 
   useEffect(() => {
-    fetch('https://stockwisely.onrender.com/prediction', {
+    fetch('https://stockwisely.onrender.com/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ticker, predictionDate: futureDate }),
