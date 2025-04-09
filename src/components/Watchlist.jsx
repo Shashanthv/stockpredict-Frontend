@@ -44,7 +44,7 @@ const StockWatchlist = () => {
     try {
       setLoading(true);
       setError('');
-      const response = await fetch(`/api/stocks/${symbol}`);
+      const response = await fetch('https://stockwisely.onrender.com/api/stocks/' + symbol);
       if (!response.ok) {
         throw new Error('Failed to fetch stock data');
       }
