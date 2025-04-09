@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://stockwisely.onrender.com/login', {
+      const response = await axios.post('https://stockwisely.onrender.com', {
         email,
         password,
       });
