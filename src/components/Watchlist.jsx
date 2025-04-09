@@ -11,6 +11,7 @@ const StockWatchlist = () => {
   const [stockPreview, setStockPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
@@ -22,7 +23,6 @@ const StockWatchlist = () => {
     }
     requestAnimationFrame(raf);
   }, []);
-
 
   // Load watchlist data from localStorage
   useEffect(() => {
@@ -107,21 +107,20 @@ const StockWatchlist = () => {
       <Navbar className="fixed top-0 left-0 w-full bg-white shadow-lg p-4 rounded-b-2xl z-50" />
 
       {/* Search Section */}
-      <div className="bg-white rounded-lg shadow-xl p-6 mt-30"> {/* Added mt-24 for margin-top to provide gap between navbar */}
-        <h1 className="text-2xl font-bold text-black mb-4">Stock Watchlist</h1>
+      <div className="bg-white rounded-lg shadow-xl p-6 mt-24">
+        <h1 className="text-2xl sm:text-3xl font-bold text-black mb-4">Stock Watchlist</h1>
         <div className="relative">
           <input
             type="text"
             placeholder="Search by company ticker..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value.toUpperCase())}
-            onKeyDown={handleKeyDown}  // Added this to trigger the search when Enter is pressed
+            onKeyDown={handleKeyDown}
             className="w-full h-14 px-4 pr-12 text-lg border-2 border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300 placeholder-gray-400 outline-none"
           />
           <button
             onClick={handleSearch}
             className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-300"
-            style={{ border: 'none' }} // Remove black border
           >
             <Search className="w-6 h-6" />
           </button>
@@ -142,7 +141,6 @@ const StockWatchlist = () => {
           </div>
           {loading ? (
             <div className="space-y-4">
-              {/* Skeleton Loader */}
               <div className="h-6 bg-gray-200 animate-pulse rounded-md w-3/4"></div>
               <div className="h-6 bg-gray-200 animate-pulse rounded-md w-1/2"></div>
               <div className="h-48 bg-gray-200 animate-pulse rounded-md w-full"></div>
@@ -159,17 +157,17 @@ const StockWatchlist = () => {
                   <LineChart data={formatChartData(stockPreview.dates, stockPreview.prices)}>
                     <XAxis dataKey="date" stroke="#fb923c" />
                     <YAxis stroke="#fb923c" />
-                    <Tooltip 
+                    <Tooltip
                       contentStyle={{ backgroundColor: 'white', borderColor: '#fed7aa' }}
                       labelStyle={{ color: '#ea580c' }}
                       formatter={(value) => `$${value}`}
                     />
-                    <Line 
-                      type="monotone" 
-                      dataKey="price" 
-                      stroke="#ea580c" 
-                      strokeWidth={2} 
-                      dot={{ fill: '#ea580c' }} 
+                    <Line
+                      type="monotone"
+                      dataKey="price"
+                      stroke="#ea580c"
+                      strokeWidth={2}
+                      dot={{ fill: '#ea580c' }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -181,7 +179,7 @@ const StockWatchlist = () => {
 
       {/* Watchlist */}
       <div id="watchlist" className="watchlist bg-white rounded-lg shadow-xl p-8 mb-8">
-        <h2 className="text-xl font-bold text-black mb-6">Your Watchlist</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">Your Watchlist</h2>
         {stockData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {stockData.map((stock, index) => (
@@ -206,17 +204,17 @@ const StockWatchlist = () => {
                     <LineChart data={formatChartData(stock.dates, stock.prices)}>
                       <XAxis dataKey="date" stroke="#fb923c" />
                       <YAxis stroke="#fb923c" />
-                      <Tooltip 
+                      <Tooltip
                         contentStyle={{ backgroundColor: 'white', borderColor: '#fed7aa' }}
                         labelStyle={{ color: '#ea580c' }}
                         formatter={(value) => `$${value}`}
                       />
-                      <Line 
-                        type="monotone" 
-                        dataKey="price" 
-                        stroke="#ea580c" 
-                        strokeWidth={2} 
-                        dot={{ fill: '#ea580c' }} 
+                      <Line
+                        type="monotone"
+                        dataKey="price"
+                        stroke="#ea580c"
+                        strokeWidth={2}
+                        dot={{ fill: '#ea580c' }}
                       />
                     </LineChart>
                   </ResponsiveContainer>

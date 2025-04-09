@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Star, User, TrendingUp } from 'lucide-react';
+import { Home, Star, User, TrendingUp, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* Logo */}
         <div className="flex items-center space-x-3">
           <Link to="/" className="flex items-center space-x-2">
             <TrendingUp className="h-8 w-8 text-orange-500" />
@@ -39,7 +41,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex items-center space-x-8">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
           <NavLink to="/home" icon={<Home />} active={location.pathname === '/home'} label="Home" />
           <NavLink to="/watchlist" icon={<Star />} active={location.pathname === '/watchlist'} label="Watchlist" />
           <div className="relative">
@@ -55,7 +58,10 @@ const Navbar = () => {
             {showDropdown && (
               <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg overflow-hidden flex flex-col">
                 <button
-                  onClick={() => { navigate('/profile'); setShowDropdown(false); }}
+                  onClick={() => {
+                    navigate('/profile');
+                    setShowDropdown(false);
+                  }}
                   className="px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Your Profile
@@ -70,7 +76,52 @@ const Navbar = () => {
             )}
           </div>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden flex items-center justify-center p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-300"
+        >
+          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </div>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg rounded-lg p-4 space-y-4">
+          <NavLink to="/home" icon={<Home />} active={location.pathname === '/home'} label="Home" />
+          <NavLink to="/watchlist" icon={<Star />} active={location.pathname === '/watchlist'} label="Watchlist" />
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+              location.pathname === '/profile' ? 'bg-orange-100 text-orange-600' : 'hover:bg-gray-100 text-gray-700'
+            }`}
+          >
+            <User className={`h-5 w-5 ${location.pathname === '/profile' ? 'text-orange-600' : 'text-gray-600'}`} />
+            <span className="text-sm font-medium">Profile</span>
+          </button>
+          {showDropdown && (
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col">
+              <button
+                onClick={() => {
+                  navigate('/profile');
+                  setShowDropdown(false);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >
+                Your Profile
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </motion.nav>
   );
 };

@@ -87,17 +87,17 @@ const Predicted = () => {
               </div>
             ) : (
               <>
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
                   Stock Prediction for {ticker}
                 </h1>
-                <p className="text-gray-600 mb-6">
+                <p className="text-sm sm:text-base text-gray-600 mb-6">
                   Predicted value for {new Date(futureDate).toLocaleDateString()}
                 </p>
-                <div className="bg-orange-50 border border-orange-200 rounded-lg p-8 mb-8">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 sm:p-8 mb-8">
+                  <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-3">
                     Predicted Value
                   </h2>
-                  <p className="text-4xl font-bold text-orange-500">
+                  <p className="text-2xl sm:text-4xl font-bold text-orange-500">
                     ₹{data?.predicted_price?.toFixed(2)}
                   </p>
                 </div>
@@ -106,19 +106,19 @@ const Predicted = () => {
           </div>
 
           {/* Accuracy Block with Skeleton Loader */}
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-8 mb-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">Prediction Accuracy</h2>
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 sm:p-8 mb-8 shadow-lg">
+            <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-3">Prediction Accuracy</h2>
             {isLoading ? (
               <div className="animate-pulse h-10 bg-gray-300 rounded w-1/3 mb-4" />
             ) : (
-              <p className="text-4xl font-bold text-orange-500">
+              <p className="text-2xl sm:text-4xl font-bold text-orange-500">
                 {data?.accuracy ? `${(100 - data.accuracy).toFixed(2)}%` : 'N/A'}
               </p>
             )}
           </div>
 
           {/* Graph Box with Loader */}
-          <div className="bg-white rounded-lg shadow-xl p-8 mb-8">
+          <div className="bg-white rounded-lg shadow-xl p-4 sm:p-8 mb-8">
             {isLoading ? (
               <div className="animate-pulse">
                 <div className="h-10 bg-gray-300 rounded w-1/2 mb-4" />
@@ -126,7 +126,7 @@ const Predicted = () => {
               </div>
             ) : (
               <>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Prediction Graph</h2>
+                <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4">Prediction Graph</h2>
                 <div className="graph-container shadow-lg w-full max-w-5xl mx-auto mb-8">
                   <img
                     src={`https://stockwisely.onrender.com/${data?.graph_path}`}

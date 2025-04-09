@@ -42,7 +42,7 @@ const ImmersiveParallax = () => {
         <div className="relative h-full w-full flex flex-col items-center justify-center px-4 sm:px-6">
           {/* Scroll Down Text */}
           <div
-            className="absolute top-6 sm:top-10 text-center text-base sm:text-xl font-semibold text-gray-700 bg-white/80 px-4 py-2 rounded-lg shadow-md max-w-[90%]"
+            className="absolute top-6 sm:top-10 text-center text-sm sm:text-lg md:text-xl font-semibold text-gray-700 bg-white/80 px-4 py-2 rounded-lg shadow-md max-w-[90%]"
             style={{
               opacity: Math.max(1 - scroll / 50, 0),
               transform: `translateY(${scroll * 0.4}px)`,
@@ -59,7 +59,7 @@ const ImmersiveParallax = () => {
               opacity: Math.max(1 - scroll / 300, 0),
             }}
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-orange-500 whitespace-nowrap">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-orange-500 whitespace-nowrap">
               StockWisely
             </h1>
           </div>
@@ -73,7 +73,7 @@ const ImmersiveParallax = () => {
             }}
           >
             <TrendingUp
-              className="text-orange-500 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32"
+              className="text-orange-500 h-16 w-16 sm:h-24 sm:w-24 lg:h-28 lg:w-28"
               style={{
                 filter: "drop-shadow(0 0 10px rgba(249, 115, 22, 0.4))",
               }}
@@ -81,13 +81,13 @@ const ImmersiveParallax = () => {
           </div>
 
           {/* Bars container */}
-          <div className="flex items-end justify-center gap-3 sm:gap-6 flex-wrap sm:flex-nowrap">
+          <div className="flex items-end justify-center gap-2 sm:gap-4 md:gap-6 flex-wrap sm:flex-nowrap">
             {bars.map((bar, index) => (
               <div key={index} className="relative group">
                 <div
                   className="rounded-t-xl transition-all duration-150 mx-auto"
                   style={{
-                    width: "clamp(40px, 4vw, 80px)",
+                    width: "clamp(30px, 4vw, 60px)",
                     height: index <= activeBarIndex
                       ? `${Math.min(scroll * 3, bar.height)}px`
                       : "40px",

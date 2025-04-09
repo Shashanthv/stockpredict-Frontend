@@ -17,13 +17,12 @@ const Home = () => {
     'T', 'TSM', 'TXN', 'TCEHY', 'TLRY', 'V', 'UBER', 'WMT', 'BA', 'GE', 'INTC',
     'ADBE', 'CRM', 'PYPL', 'PEP', 'KO', 'JNJ', 'DIS', 'NKE', 'PFE', 'SBUX',
     'SHOP', 'ZM', 'ROKU', 'CSCO', 'ORCL', 'AMD', 'PLTR', 'SOFI',
-  
+
     // Indian Stocks (.NS for NSE)
     'RELIANCE.NS', 'HDFCBANK.NS', 'ICICIBANK.NS', 'INFY.NS', 'TCS.NS',
     'IRCTC.NS', 'SBIN.NS', 'AXISBANK.NS', 'BAJFINANCE.NS', 'TATAMOTORS.NS',
     'HINDUNILVR.NS'
   ];
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,21 +75,23 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
-      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl w-full text-center">
-          <h1 className="text-5xl font-bold text-orange-500 mb-4">Stock Wisely</h1>
-          <p className="text-xl text-gray-600 mb-8">
-            AI-powered stock price predictions for Better investment decisions
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-orange-500 mb-4">
+            Stock Wisely
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8">
+            AI-powered stock price predictions for better investment decisions
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto"
+            className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10 max-w-2xl mx-auto"
           >
             <div className="space-y-6">
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                   Company Ticker
                 </label>
                 <input
@@ -98,7 +99,7 @@ const Home = () => {
                   value={ticker}
                   onChange={(e) => setTicker(e.target.value.toUpperCase())}
                   onKeyDown={handleKeyDown}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none text-sm sm:text-base"
                   placeholder="Enter stock ticker (e.g., AAPL)"
                   required
                 />
@@ -124,23 +125,23 @@ const Home = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                   Future Date
                 </label>
                 <input
                   type="date"
                   value={futureDate}
                   onChange={(e) => setFutureDate(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none text-sm sm:text-base"
                   required
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-orange-500 text-white py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="w-full bg-orange-500 text-white py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base"
               >
-                <TrendingUp className="h-5 w-5" />
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6" />
                 <span>Predict Stock Price</span>
               </button>
             </div>
